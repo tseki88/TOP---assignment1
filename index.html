@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="runGame();">Play Game!</button>
+</body>
+<script>
+
+// Computer Output
+//returns random value between 1 ~ 3
+function computerPlay(){
+    return Math.floor(Math.random() * 3) + 1;
+}
+
+// prompts user input, converts it to lowercase
+// to then be used in playerSelection() to assign value
+
+function playerInput(){
+    let string = prompt("Let's play rock paper scissor. Type one choice");
+    let input = string.toLowerCase();
+    return input;
+}
+
+function playerSelection(){
+    switch(playerInput()){
+        case "rock":
+            return 1;
+            break;
+
+        case "paper":
+            return 2;
+            break;
+
+        case "scissor":
+            return 3;
+            break;
+    }
+}
+
+// Used to display what each player played
+function output(v){
+    if (v == 1){
+        return("rock");
+    } else if (v == 2){
+        return("paper");
+    } else {
+        return("scissor");
+    }
+}
+
+
+function runGame(){
+    const a = playerSelection();
+    const b = computerPlay();
+    console.log("You play " + output(a));
+    console.log("Computer plays " + output(b));
+    playGame(a,b);
+}
+
+// Play Game
+function playGame(a,b){
+    if (a == b){
+        console.log("draw! try again");
+    } else if (a == 1){
+        if (b == 2){
+            console.log("Paper beats rock, you lose");
+        } else {
+            console.log("Rock beats scissor, you win!");
+        }
+    } else if (a == 2){
+        if (b == 1){
+            console.log("Paper beats rock, you win!");
+        } else {
+            console.log("Scissor beats paper, you lose");
+        }
+    } else {
+        if (b == 1){
+            console.log("Rock beats scissor, you lose");
+        } else {
+            console.log("Scissor beats paper, you win!");
+        }
+    }
+}
+
+
+
+
+</script>
+</html>
